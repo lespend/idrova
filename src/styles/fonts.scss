@@ -1,0 +1,37 @@
+@font-face {
+    font-family: 'Mont';
+    src: url('/src/fonts/Mont-Bold.eot');
+    src: url('/src/fonts/Mont-Bold.eot?#iefix') format('embedded-opentype'),
+        url('/src/fonts/Mont-Bold.woff') format('woff'),
+        url('/src/fonts/Mont-Bold.ttf') format('truetype'),
+        url('/src/fonts/Mont-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Mont';
+    src: url('/src/fonts/Mont-SemiBold.eot');
+    src: url('/src/fonts/Mont-SemiBold.eot?#iefix') format('embedded-opentype'),
+        url('/src/fonts/Mont-SemiBold.woff') format('woff'),
+        url('/src/fonts/Mont-SemiBold.ttf') format('truetype'),
+        url('/src/fonts/Mont-SemiBold.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Onest';
+    src: url('/src/fonts/Onest-Medium.woff') format('woff'),
+        url('/src/fonts/Onest-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Onest';
+    src: url('/src/fonts/Onest-Regular.woff') format('woff'),
+        url('/src/fonts/Onest-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
