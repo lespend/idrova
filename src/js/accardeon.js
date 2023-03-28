@@ -17,9 +17,20 @@ export function Accardeon() {
     }
 
     let renderActiveItem = function() {
-        let activeItemContent = document.querySelector('.answers__accardeon-item--active').querySelector('.answers__accardeon-item-content');
-        let placeForItem = document.querySelector('.answers__main-item');
-        if (activeItemContent === null) return;
-        placeForItem.innerHTML = activeItemContent.innerHTML;
+        if (window.innerWidth > 1200) {
+            let activeItemContent = document.querySelector('.answers__accardeon-item--active+.answers__accardeon-item-content');
+            let placeForItem = document.querySelector('.answers__main-item');
+            if (activeItemContent === null) return;
+            placeForItem.innerHTML = activeItemContent.innerHTML;
+        } else {
+            let prevActiveItemContent = document.querySelector('.answers__accardeon-item-content--active');
+            prevActiveItemContent?.classList.remove('answers__accardeon-item-content--active')
+            let activeItemContent = document.querySelector('.answers__accardeon-item--active+.answers__accardeon-item-content');
+            let activeItemButton = document.querySelector('.answers__accardeon-item--active');
+            activeItemButton.scrollIntoView();
+            activeItemContent.classList.add('answers__accardeon-item-content--active')
+        }
     }
+
+    window.addEventListener('resize', () => renderActiveItem);
 }

@@ -6,11 +6,15 @@ export function Map(id) {
         [56.00928885994502,37.84980964160128],
     ];
 
+    let mapDestroy;
     function mapInit() {
         let map = new ymaps.Map(id, {
             center: coords[0],
             zoom: 10
         });
+        mapDestroy = function() {
+            map.destroy();
+        }
     
         for (let pos of coords) {
             let placemark = new ymaps.Placemark(pos, {}, {
@@ -46,6 +50,11 @@ export function Map(id) {
     }
 
     this.init = function() {
+        ymaps.ready(mapInit);
+    }
+
+    this.resize = function() {
+        mapDestroy();
         ymaps.ready(mapInit);
     }
 }

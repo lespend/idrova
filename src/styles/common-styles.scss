@@ -4,15 +4,30 @@
     margin: 0 auto;
 }
 
+.dont-scroll {
+    overflow: hidden;
+}
+
 .primary-button {
+    box-sizing: border-box;
+    border: 1px solid transparent;
     display: block;
     background-color: #D2001F;
     text-decoration: none;
     border-radius: 8px;
     padding: 9px 27px;
-    color: #ffffff;  
-    border: none;
+    color: #ffffff;
     text-align: center;
+    cursor: pointer;
+    transition: background-color .3s ease-out,
+                color .3s ease-out,
+                border .3s ease-out;
+
+    &:hover {
+        background-color: transparent;
+        border: 1px solid #D2001F;
+        color: #D2001F;
+    }
 
     &--outline {
         background: none;
@@ -24,12 +39,55 @@
 .primary-card {
     max-width: 380px;
     position: relative;
-    padding-left: 53px;
+    margin-left: 30px;
+    padding-right: 30px;
     margin-top: 30px;
     width: 100%;
+    text-decoration: none;
+    color: #000;
+    transition: transform 0.3s ease-out;
+    cursor: pointer;
 
-    &:nth-child(3n + 1) {
-        padding-left: 0;
+    &:hover {
+        transform: scale(1.1);
+    }
+
+    &__label {
+        position: absolute;
+        top: -25px;
+        right: 47px;
+        display: block;
+        width: 70px;
+        height: 70px;
+        text-align: center;
+        color: #fff;
+        line-height: 70px;
+        border-radius: 50%;
+        font-weight: 700;
+        font-size: 15px;
+        @include font-family(Mont);
+
+        &--red {
+            background-color: #D2001F;
+        }
+
+        &--orange {
+            background-color: #F9963E;
+        }
+
+        &--brown {
+            background-color: #966137;
+        }
+
+        &--hot {
+            width: 50px;
+            height: 50px;
+            right: 37px;
+            background-color: #F9963E;
+            background-image: url(/src/assets/white-hot-icon.svg);
+            background-position: center;
+            background-repeat: no-repeat;
+        }
     }
 
     &__picture {
@@ -40,6 +98,7 @@
     }
 
     &__wrapper {
+        position: relative;
         max-width: 296px;
         margin: 207px 0 0 11px;
         padding: 27px 40px;
