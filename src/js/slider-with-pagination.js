@@ -1,5 +1,7 @@
 export function SliderWithPagination() {
     let items = document.querySelectorAll('.partners__slider-item');
+    let slider = document.querySelector('.partners__slider');
+    let sliderContainer = document.querySelector('.partners__slider-container');
     let sliderTrack = document.querySelector('.partners__slider-track');
     let btnNext = document.querySelector('.partners__slider-arrow--right');
     let btnPrev = document.querySelector('.partners__slider-arrow--left');
@@ -39,19 +41,52 @@ export function SliderWithPagination() {
             checkButtons();
             changeActiveDot();
         })
+        this.resize();
+    }
 
-        dots.forEach((el, index) => {
-            el.addEventListener('click', () => {
-                if (index == dots.length - 1) {
-                    position = index * -scrollItemsNum * (width + gap) + (scrollItemsNum - items.length % scrollItemsNum) * (width + gap);
-                } else {
-                    position = index * -scrollItemsNum * (width + gap);
-                }
-                sliderTrack.style.transform = `translateX(${position}px)`;
-                changeActiveDot();
-                checkButtons();
-            });
-        });
+    this.resize = function() {
+        showItemsNum = Math.floor(sliderTrack.clientWidth / (width + gap));
+        scrollItemsNum = showItemsNum;
+        console.log(showItemsNum);
+        createDots();
+        if (window.innerWidth <= 1200) {
+            sliderTrack.classList.remove('partners__slider-track--transition')
+            btnNext.style.display = 'none';
+            btnPrev.style.display = 'none';
+            dotList.innerHTML = '';
+            let pressed = false;
+            let startX;
+            let scrollLeft;
+
+            slider.addEventListener('mousedown', start);
+            slider.addEventListener('touchstart', start);
+
+            slider.addEventListener('mousemove', move);
+            slider.addEventListener('touchmove', move);
+
+            slider.addEventListener('touchend', end);
+            slider.addEventListener('mouseup', end);
+            slider.addEventListener('mouseleave', end);
+
+            function start(e) {
+                pressed = true;
+                startX = e.pageX || e.touches[0].pageX - slider.offsetLeft;
+                slider.style.cursor = 'grabbing';
+                scrollLeft = sliderContainer.scrollLeft;
+            }
+
+            function move(e) {
+                if(!pressed) return;
+                e.preventDefault();
+                let x = e.pageX || e.touches[0].pageX - slider.offsetLeft;
+                sliderContainer.scrollLeft = scrollLeft - (x - startX);
+            }
+
+            function end() {
+                pressed = false;
+                slider.style.cursor = 'grab';
+            }
+        }
     }
 
     function scrollItem() {
@@ -79,5 +114,17 @@ export function SliderWithPagination() {
             dotList.append(elem);
         }
         dots = document.querySelectorAll('.partners__slider-dot');
+        dots.forEach((el, index) => {
+            el.addEventListener('click', () => {
+                if (index == dots.length - 1) {
+                    position = index * -scrollItemsNum * (width + gap) + (scrollItemsNum - items.length % scrollItemsNum) * (width + gap);
+                } else {
+                    position = index * -scrollItemsNum * (width + gap);
+                }
+                sliderTrack.style.transform = `translateX(${position}px)`;
+                changeActiveDot();
+                checkButtons();
+            });
+        });
     }
 }
