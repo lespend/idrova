@@ -1,3 +1,4 @@
+/*!Theme name: Idrova*/
 @import 'fonts';
 @import 'mixins';
 @import 'common-styles';
@@ -126,8 +127,7 @@ ul {
         flex-shrink: 0;
         width: 115px;
         height: 155px;
-        background: url(/src/assets/logo.svg);
-        z-index: 20;
+        z-index: 50;
     }
 
     &__name {
@@ -707,6 +707,7 @@ ul {
             padding: 23px 35px 20px 63px;
             border: 1px solid #DDDFE4;
             border-radius: 20px;
+            cursor: pointer;
             
             &::before {
                 content: '';
@@ -1290,6 +1291,84 @@ ul {
     background: none !important;
 }
 
+.buy-modal {
+    position: fixed;
+    border: none;
+    max-width: 690px;
+    width: 100%;
+    border-radius: 20px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(.2);
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    transition: transform .3s ease-out,
+                opacity .3s ease-out;
+
+    &[open] {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+        visibility: visible;
+    }
+
+    &::backdrop {
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    &__close {
+        position: absolute;
+        top: 34px;
+        right: 46px;
+        width: 24px;
+        height: 24px;
+        background: url(/src/assets/close.svg) no-repeat;
+        outline: none;
+        border: none;
+        transition: opacity 0.5s ease-out;
+
+        &:hover {
+            opacity: 0.6;
+        }
+    }
+
+    &__header {
+        font-size: 40px;
+        font-weight: 700;
+        @include font-family(Mont);
+    }
+
+    &__price {
+        margin-top: 10px;
+        font-size: 40px;
+        font-weight: 700;
+        @include font-family(Mont);
+
+        small {
+            font-size: 24px;
+        }
+    }
+
+    &__form {
+        margin-top: 24px;
+    }
+
+    &__container {
+        max-width: 472px;
+        padding: 25px 20px 25px 20px;
+        margin: 0 auto;
+    }
+
+    &__label {
+        display: block;
+        margin-top: 20px;
+    }
+
+    &__submit {
+        margin-top: 25px;
+    }
+}
+
 @media (max-width: 1310px) {
     .main-container {
         padding-left: 30px;
@@ -1717,6 +1796,14 @@ ul {
 
     .main-header {
         height: 78px;
+
+        &__phone-wrapper {
+
+            height: 100vh;
+            top: 78px;
+            width: 100%;
+            z-index: 40;
+        }
     }
 
     .main-logotype {

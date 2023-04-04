@@ -47,7 +47,6 @@ export function SliderWithPagination() {
     this.resize = function() {
         showItemsNum = Math.floor(sliderTrack.clientWidth / (width + gap));
         scrollItemsNum = showItemsNum;
-        console.log(showItemsNum);
         createDots();
         if (window.innerWidth <= 1200) {
             sliderTrack.classList.remove('partners__slider-track--transition')

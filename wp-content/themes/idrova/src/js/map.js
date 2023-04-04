@@ -15,11 +15,11 @@ export function Map(id) {
         mapDestroy = function() {
             map.destroy();
         }
-    
-        for (let pos of coords) {
-            let placemark = new ymaps.Placemark(pos, {}, {
+        
+        for (let pos of WP.mapCoords) {
+            let placemark = new ymaps.Placemark([pos.latitude, pos.longitude], {}, {
                 iconLayout: 'default#image',
-                iconImageHref: 'assets/map-location-icon.png',
+                iconImageHref: `${WP.siteUrl}/assets/map-location-icon.png`,
                 iconImageSize: [52, 58],
                 iconImageOffset: [-26, -58]
             });
