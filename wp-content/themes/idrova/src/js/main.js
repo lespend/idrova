@@ -7,6 +7,7 @@ import { BurgerMenu } from './burger-menu';
 import { AdvantagesSlider } from './advantages-slider';
 import { Navigation } from './navigation';
 import { CardModal } from './card-modal';
+import { ShowLabel } from './showLabel';
 
 function App() {
     let slider = new Slider();
@@ -18,6 +19,7 @@ function App() {
     let menu = new BurgerMenu();
     let nav = new Navigation();
     let modal = new CardModal();
+    let labels = new ShowLabel();
 
     this.init = function() {
         slider.init();
@@ -29,6 +31,7 @@ function App() {
         nav.init();
         advantagesSlider.init();
         modal.init();
+        labels.init();
     }
 
     this.resize = function() {

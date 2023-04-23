@@ -21,6 +21,9 @@
             </li>
         </ul>
     </div>
+    <div class="first-screen__video">
+        <video class="first-screen__video-media" src="<?= get_template_directory_uri() ?>/assets/video-first-screen.mp4" autoplay muted loop></video>
+    </div>
 </section>
 <section class="catalog main-container" id="catalog">
     <h3 class="catalog__header">Каталог и <small class="catalog__header--price">цены</small></h3>
@@ -31,113 +34,18 @@
             $catalog_products_query = new WP_Query([
                 'post_type' => 'product',
                 'tax_query' => [
+                    [
                     'taxonomy' => 'product-categories',
                     'field' => 'slug',
                     'terms' => 'default',
+                    ],
                 ],
             ]);
         ?>
         <?php while($catalog_products_query->have_posts()): $catalog_products_query->the_post(); ?>
-            <?= get_template_part('product-card'); ?>
+            <?= get_template_part('product-card-template'); ?>
         <?php endwhile; ?>
-        <!-- <a class="primary-card">
-            <img class="primary-card__picture" src="<?= get_template_directory_uri() ?>/assets/drova1.jpg" alt="Дрова" width="410" height="243">
-            <div class="primary-card__wrapper">
-                <small class="primary-card__label primary-card__label--red">акция</small>
-                <h2 class="primary-card__header">Ольховые деревья</h2>
-                <ul class="primary-card__marks">
-                    <li class="primary-card__mark-item">Царские дрова, не дают искры, хорошо для каминов</li>
-                    <li class="primary-card__mark-item">Имеют красноватый оттенок на торцах</li>
-                    <li class="primary-card__mark-item">Высокая теплотворность 1835ккал\дм</li>
-                </ul>
-                <div class="primary-card__footer">
-                    <p class="primary-card__price">2290 ₽\м³</p>
-                    <button class="primary-button primary-card__button">Купить</button>
-                </div>
-            </div>
-        </a>
-        
-        <a class="primary-card">
-            <img class="primary-card__picture" src="<?= get_template_directory_uri() ?>/assets/drova1.jpg" alt="Дрова" width="410" height="243">
-            <div class="primary-card__wrapper">
-                <small class="primary-card__label primary-card__label--orange">хит</small>
-                <h2 class="primary-card__header">Ольховые деревья</h2>
-                <ul class="primary-card__marks">
-                    <li class="primary-card__mark-item">Царские дрова, не дают искры, хорошо для каминов</li>
-                    <li class="primary-card__mark-item">Имеют красноватый оттенок на торцах</li>
-                    <li class="primary-card__mark-item">Высокая теплотворность 1835ккал\дм</li>
-                </ul>
-                <div class="primary-card__footer">
-                    <p class="primary-card__price">2290 ₽\м³</p>
-                    <button class="primary-button primary-card__button">Купить</button>
-                </div>
-            </div>
-        </a>
-
-        <a class="primary-card">
-            <img class="primary-card__picture" src="<?= get_template_directory_uri() ?>/assets/drova1.jpg" alt="Дрова" width="410" height="243">
-            <div class="primary-card__wrapper">
-                <h2 class="primary-card__header">Ольховые деревья</h2>
-                <ul class="primary-card__marks">
-                    <li class="primary-card__mark-item">Царские дрова, не дают искры, хорошо для каминов</li>
-                    <li class="primary-card__mark-item">Имеют красноватый оттенок на торцах</li>
-                    <li class="primary-card__mark-item">Высокая теплотворность 1835ккал\дм</li>
-                </ul>
-                <div class="primary-card__footer">
-                    <p class="primary-card__price">2290 ₽\м³</p>
-                    <button class="primary-button primary-card__button">Купить</button>
-                </div>
-            </div>
-        </a>
-
-        <a class="primary-card">
-            <img class="primary-card__picture" src="<?= get_template_directory_uri() ?>/assets/drova1.jpg" alt="Дрова" width="410" height="243">
-            <div class="primary-card__wrapper">
-                <h2 class="primary-card__header">Ольховые деревья</h2>
-                <ul class="primary-card__marks">
-                    <li class="primary-card__mark-item">Царские дрова, не дают искры, хорошо для каминов</li>
-                    <li class="primary-card__mark-item">Имеют красноватый оттенок на торцах</li>
-                    <li class="primary-card__mark-item">Высокая теплотворность 1835ккал\дм</li>
-                </ul>
-                <div class="primary-card__footer">
-                    <p class="primary-card__price">2290 ₽\м³</p>
-                    <button class="primary-button primary-card__button">Купить</button>
-                </div>
-            </div>
-        </a>
-
-        <a class="primary-card">
-            <img class="primary-card__picture" src="<?= get_template_directory_uri() ?>/assets/drova1.jpg" alt="Дрова" width="410" height="243">
-            <div class="primary-card__wrapper">
-                <small class="primary-card__label primary-card__label--brown">новое</small>
-                <h2 class="primary-card__header">Ольховые деревья</h2>
-                <ul class="primary-card__marks">
-                    <li class="primary-card__mark-item">Царские дрова, не дают искры, хорошо для каминов</li>
-                    <li class="primary-card__mark-item">Имеют красноватый оттенок на торцах</li>
-                    <li class="primary-card__mark-item">Высокая теплотворность 1835ккал\дм</li>
-                </ul>
-                <div class="primary-card__footer">
-                    <p class="primary-card__price">2290 ₽\м³</p>
-                    <button class="primary-button primary-card__button">Купить</button>
-                </div>
-            </div>
-        </a>
-
-        <a class="primary-card">
-            <img class="primary-card__picture" src="<?= get_template_directory_uri() ?>/assets/drova1.jpg" alt="Дрова" width="410" height="243">
-            <div class="primary-card__wrapper">
-                <h2 class="primary-card__header">Ольховые деревья</h2>
-                <ul class="primary-card__marks">
-                    <li class="primary-card__mark-item">Царские дрова, не дают искры, хорошо для каминов</li>
-                    <li class="primary-card__mark-item">Имеют красноватый оттенок на торцах</li>
-                    <li class="primary-card__mark-item">Высокая теплотворность 1835ккал\дм</li>
-                </ul>
-                <div class="primary-card__footer">
-                    <p class="primary-card__price">2290 ₽\м³</p>
-                    <button class="primary-button primary-card__button">Купить</button>
-                </div>
-            </div>
-        </a> -->
+        <?php wp_reset_postdata(); ?>
     </ul>
 </section>
 
@@ -151,31 +59,18 @@
                 <small class="mass-media__mark--less">средняя оценка нашей работы, из учета более чем 2000 заказов</small>
             </p>
         </div>
-        <div class="mass-media__slider">                
+        <div class="mass-media__slider">                          
             <div class="mass-media__slider-container">
                 <button class="mass-media__slider-arrow mass-media__slider-arrow--left"></button>
-            <button class="mass-media__slider-arrow mass-media__slider-arrow--right"></button>
+                <button class="mass-media__slider-arrow mass-media__slider-arrow--right"></button>
                 <div class="mass-media__slider-track">
-                    <a class="mass-media__block video-block" href="">
-                        <img class="video-block__preview" src="<?= get_template_directory_uri() ?>/assets/video-preview-1.jpg" alt="Камин" width="300" height="201">
-                        <p class="video-block__source">Комсомольская правда</p>
-                        <h2 class="video-block__header">Объём тепла, выделяемый при сгорании дров</h2>
+                    <?php  foreach(carbon_get_theme_option('media_video') as $element):  ?>
+                    <a class="mass-media__block video-block" href="<?=$element['media_video_link']?>">
+                        <img class="video-block__preview" src="<?=wp_get_attachment_image_url($element['media_video_preview'], 'video_preview')?>">
+                        <p class="video-block__source"><?=$element['media_video_author']?></p>
+                        <h2 class="video-block__header"><?=$element['media_video_header']?></h2>
                     </a>
-                    <a class="mass-media__block video-block" href="">
-                        <img class="video-block__preview" src="<?= get_template_directory_uri() ?>/assets/video-preview-2.jpg" alt="Камин" width="300" height="201">
-                        <p class="video-block__source">Комсомольская правда</p>
-                        <h2 class="video-block__header">Дрова с юридической точки зрения</h2>
-                    </a>
-                    <a class="mass-media__block video-block" href="">
-                        <img class="video-block__preview" src="<?= get_template_directory_uri() ?>/assets/video-preview-1.jpg" alt="Камин" width="300" height="201">
-                        <p class="video-block__source">Комсомольская правда</p>
-                        <h2 class="video-block__header">3</h2>
-                    </a>
-                    <a class="mass-media__block video-block" href="">
-                        <img class="video-block__preview" src="<?= get_template_directory_uri() ?>/assets/video-preview-2.jpg" alt="Камин" width="300" height="201">
-                        <p class="video-block__source">Комсомольская правда</p>
-                        <h2 class="video-block__header">4</h2>
-                    </a>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>
@@ -185,70 +80,21 @@
 <section class="hot-offer main-container">
     <h3 class="hot-offer__header"><small class="hot-offer__header--hot">Горящие</small> предложения</h3>
     <ul class="hot-offer__card-list">
-        <li class="primary-card">
-            <img class="primary-card__picture" src="<?= get_template_directory_uri() ?>/assets/hot-offer-1.jpg" alt="Дрова" width="410" height="243">
-            <div class="primary-card__wrapper">
-                <small class="primary-card__label primary-card__label--hot"></small>
-                <h2 class="primary-card__header">Брикеты RUF</h2>
-                <p class="primary-card__text">100% дуб. Самая низкая цена на рынке</p>
-                <div class="primary-card__footer">
-                    <p class="primary-card__price">2290 ₽\шт</p>
-                    <button class="primary-button primary-card__button">Купить</button>
-                </div>
-            </div>
-        </li>
-
-        <li class="primary-card">
-            <img class="primary-card__picture" src="<?= get_template_directory_uri() ?>/assets/hot-offer-1.jpg" alt="Дрова" width="410" height="243">
-            <div class="primary-card__wrapper">
-                <small class="primary-card__label primary-card__label--hot"></small>
-                <h2 class="primary-card__header">Ольховые деревья</h2>
-                <p class="primary-card__text">100% дуб. Самая низкая цена на рынке</p>
-                <div class="primary-card__footer">
-                    <p class="primary-card__price">2290 ₽\шт</p>
-                    <button class="primary-button primary-card__button">Купить</button>
-                </div>
-            </div>
-        </li>
-
-        <li class="primary-card">
-            <img class="primary-card__picture" src="<?= get_template_directory_uri() ?>/assets/hot-offer-1.jpg" alt="Дрова" width="410" height="243">
-            <div class="primary-card__wrapper">
-                <small class="primary-card__label primary-card__label--hot"></small>
-                <h2 class="primary-card__header">Ольховые деревья</h2>
-                <p class="primary-card__text">100% дуб. Самая низкая цена на рынке</p>
-                <div class="primary-card__footer">
-                    <p class="primary-card__price">2290 ₽\шт</p>
-                    <button class="primary-button primary-card__button">Купить</button>
-                </div>
-            </div>
-        </li>
-
-        <li class="primary-card">
-            <img class="primary-card__picture" src="<?= get_template_directory_uri() ?>/assets/hot-offer-1.jpg" alt="Дрова" width="410" height="243">
-            <div class="primary-card__wrapper">
-                <small class="primary-card__label primary-card__label--hot"></small>
-                <h2 class="primary-card__header">Ольховые деревья</h2>
-                <p class="primary-card__text">100% дуб. Самая низкая цена на рынке</p>
-                <div class="primary-card__footer">
-                    <p class="primary-card__price">2290 ₽\шт</p>
-                    <button class="primary-button primary-card__button">Купить</button>
-                </div>
-            </div>
-        </li>
-
-        <li class="primary-card">
-            <img class="primary-card__picture" src="<?= get_template_directory_uri() ?>/assets/hot-offer-1.jpg" alt="Дрова" width="410" height="243">
-            <div class="primary-card__wrapper">
-                <small class="primary-card__label primary-card__label--hot"></small>
-                <h2 class="primary-card__header">Ольховые деревья</h2>
-                <p class="primary-card__text">100% дуб. Самая низкая цена на рынке</p>
-                <div class="primary-card__footer">
-                    <p class="primary-card__price">2290 ₽\шт</p>
-                    <button class="primary-button primary-card__button">Купить</button>
-                </div>
-            </div>
-        </li>
+        <?php
+            $hot_products_query = new WP_Query([
+                'post_type' => 'product',
+                'tax_query' => [
+                    [
+                    'taxonomy' => 'product-categories',
+                    'field' => 'slug',
+                    'terms' => 'hot',
+                    ],
+                ],
+            ]);
+        ?>
+        <?php while($hot_products_query->have_posts()): $hot_products_query->the_post(); ?>
+            <?= get_template_part('product-card-hot-template'); ?>
+        <?php endwhile; ?>
     </ul>
 </section>
 
@@ -332,64 +178,21 @@
     <div class="answers__left-wrapper">
         <h3 class="answers__header">Вопрос - ответ</h3>
         <div class="answers__accardeon">
-            <div class="answers__accardeon-item">
-                <div class="answers__accardeon-item-title">Как рассчитать объем дров?</div>                    
+            <?php foreach (carbon_get_theme_option('answers_complex') as $index => $element): ?>
+            <div class="answers__accardeon-item <?php if($index==0) echo 'answers__accardeon-item--active' ?>">
+                <div class="answers__accardeon-item-title"><?=$element['answers_header']?></div>
             </div>
             <div class="answers__accardeon-item-content">
-                <h2 class="answers__accardeon-item-content-header">Что-то другое</h2>
-                <div class="answers__accardeon-item-content-desc">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta dolore nemo minima eos, nostrum similique culpa. Beatae, voluptates! Est officia earum repudiandae ratione ipsam excepturi id assumenda fugit. Error, accusantium.</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus debitis laboriosam quo cupiditate unde culpa neque beatae amet soluta sapiente reiciendis sunt consequuntur cumque pariatur ut temporibus, non odit? Deleniti.
-                    Temporibus, quasi voluptates voluptatum fugit optio aspernatur nostrum cum accusantium deserunt veritatis sunt repudiandae libero in dolores illo? Enim reprehenderit quis nostrum aliquid quam adipisci minima omnis labore tempore perspiciatis.
-                    Tenetur molestias fuga ducimus, consequatur voluptatem architecto porro itaque. Fugit minima reiciendis aliquid necessitatibus dicta esse, dolorem iure suscipit dolorum, ipsam, praesentium explicabo magni</p>
-                </div>
+                <h2 class="answers__accardeon-item-content-header"><?=$element['answers_header']?></h2>
+                <div class="answers__accardeon-item-content-desc"><?=apply_filters( 'the_content', $element['answers__content']);?></div>
+            </div>   
+            <?php endforeach; ?>
+            <div class="answers__added-info answers__added-info--desktop">
+                <p class="answers__desc">Если Вы не нашли ответ на вопрос, пожалуйста заполните форму, мы свяжемся с Вами ответим на все интересующие </p>
+                <p class="answers__sub-desc">среднее время ожидания 10 минут в рабочие будни</p>
+                <a href="#order" class="answers__button primary-button primary-button--outline">Задать вопрос</a>
             </div>
-            <div class="answers__accardeon-item answers__accardeon-item--active">
-                <div class="answers__accardeon-item-title">Условия загрузки и зона доставки</div>                    
-            </div>
-            <div class="answers__accardeon-item-content">
-                <h2 class="answers__accardeon-item-content-header">Условия загрузки и зона доставки</h2>
-                <div class="answers__accardeon-item-content-desc">
-                    <p>Объём тепла, выделяемый при сгорании дров, зависит от породы дерева и влажности древесины.</p>
-                    <p>Влажность снижает теплотворность дров, так как испаряемая вода уносит часть тепловой энергии. Потери от влажности незначительно зависят от начальной температуры дров (точнее, воды в них)</p>
-                </div>
-            </div>
-            <div class="answers__accardeon-item">
-                <div class="answers__accardeon-item-title">Как выбрать наиболее подходящий тип дров?</div>
-            </div>
-            <div class="answers__accardeon-item-content">
-                <h2 class="answers__accardeon-item-content-header">Условия загрузки и зона доставки99</h2>
-                <div class="answers__accardeon-item-content-desc">
-                    <p>Объём тепла, выделяемый при сгорании дров, зависит от породы дерева и влажности древесины.</p>
-                    <p>Влажность снижает теплотворность дров, так как испаряемая вода уносит часть тепловой энергии. Потери от влажности незначительно зависят от начальной температуры дров (точнее, воды в них)</p>
-                </div>
-            </div>
-            <div class="answers__accardeon-item">
-                <div class="answers__accardeon-item-title">Сравнение хвойных и лиственных пород</div>                    <div class="answers__accardeon-item-content"></div>
-            </div>
-            <div class="answers__accardeon-item-content">
-                <h2 class="answers__accardeon-item-content-header">Условия загрузки и зона доставки123</h2>
-                <div class="answers__accardeon-item-content-desc">
-                    <p>Объём тепла, выделяемый при сгорании дров, зависит от породы дерева и влажности древесины.</p>
-                    <p>Влажность снижает теплотворность дров, так как испаряемая вода уносит часть тепловой энергии. Потери от влажности незначительно зависят от начальной температуры дров (точнее, воды в них)</p>
-                </div>
-            </div>
-            <div class="answers__accardeon-item">
-                <div class="answers__accardeon-item-title">Теплопроводность и теплотворность</div>
-            </div>
-            <div class="answers__accardeon-item-content">
-                <h2 class="answers__accardeon-item-content-header">Все по другому</h2>
-                <div class="answers__accardeon-item-content-desc">
-                    <p>Объём тепла, выделяемый при сгорании дров, зависит от породы дерева и влажности древесины.</p>
-                    <p>Влажность снижает теплотворность дров, так как испаряемая вода уносит часть тепловой энергии. Потери от влажности незначительно зависят от начальной температуры дров (точнее, воды в них)</p>
-                </div>
-            </div>
-        </div>
-        <div class="answers__added-info answers__added-info--desktop">
-            <p class="answers__desc">Если Вы не нашли ответ на вопрос, пожалуйста заполните форму, мы свяжемся с Вами ответим на все интересующие </p>
-            <p class="answers__sub-desc">среднее время ожидания 10 минут в рабочие будни</p>
-            <a href="#order" class="answers__button primary-button primary-button--outline">Задать вопрос</a>
-        </div>            
+        </div>        
     </div>
     <div class="answers__right-wrapper">
         <div class="answers__main-item">
@@ -400,9 +203,6 @@
         </div>
         <div id ="map1" class="answers__map shop-map">
             <div class="shop-map__tabs">
-                <button class="shop-map__button shop-map__button--active">Мурино</button>
-                <button class="shop-map__button">Тучково</button>
-                <button class="shop-map__button">Пушкино</button>
             </div>
         </div>
         <div class="answers__added-info answers__added-info--smart">
@@ -424,60 +224,11 @@
         </ul>
         <div class="partners__slider-container">
             <div class="partners__slider-track partners__slider-track--transition">
-                <a class="partners__slider-item">
-                    <img class="partners__slider-item-image" alt="">
+                <?php foreach(carbon_get_theme_option('partners_complex') as $element): ?>                
+                <a class="partners__slider-item" href="<?=$element['partners_link']?>">
+                    <img class="partners__slider-item-image" src="<?=wp_get_attachment_image_url($element['partners_logo'], 'partners_logo')?>">
                 </a>
-                <a class="partners__slider-item">
-                    <img class="partners__slider-item-image" alt="">
-                </a>
-                <a class="partners__slider-item">
-                    <img class="partners__slider-item-image" alt="">
-                </a>
-                <a class="partners__slider-item">
-                    <img class="partners__slider-item-image" alt="">
-                </a>
-                <a class="partners__slider-item">
-                    <img class="partners__slider-item-image" alt="">
-                </a>
-                <a class="partners__slider-item">
-                    <img class="partners__slider-item-image" alt="">
-                </a>
-                <a class="partners__slider-item">
-                    <img class="partners__slider-item-image" alt="">
-                </a>
-                <a class="partners__slider-item">
-                    <img class="partners__slider-item-image" alt="">
-                </a>
-                <a class="partners__slider-item">
-                    <img class="partners__slider-item-image" alt="">
-                </a>
-                <a class="partners__slider-item">
-                    <img class="partners__slider-item-image" alt="">
-                </a>
-                <a class="partners__slider-item">
-                    <img class="partners__slider-item-image" alt="">
-                </a>
-                <a class="partners__slider-item">
-                    <img class="partners__slider-item-image" alt="">
-                </a>
-                <a class="partners__slider-item">
-                    <img class="partners__slider-item-image" alt="">
-                </a>
-                <a class="partners__slider-item">
-                    <img class="partners__slider-item-image" alt="">
-                </a>
-                <a class="partners__slider-item">
-                    <img class="partners__slider-item-image" alt="">
-                </a>
-                <a class="partners__slider-item">
-                    <img class="partners__slider-item-image" alt="">
-                </a>
-                <a class="partners__slider-item">
-                    <img class="partners__slider-item-image" alt="">
-                </a>
-                <a class="partners__slider-item">
-                    <img class="partners__slider-item-image" alt="">
-                </a>
+                <?php endforeach; ?>
             </div>
         </div>
     </div>
@@ -529,9 +280,6 @@
     <div class="location__right">
         <div id ="map2" class="location__map shop-map">
             <div class="shop-map__tabs">
-                <button class="shop-map__button shop-map__button--active">Мурино</button>
-                <button class="shop-map__button">Тучково</button>
-                <button class="shop-map__button">Пушкино</button>
             </div>
         </div>
     </div>

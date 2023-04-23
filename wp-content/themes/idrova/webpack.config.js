@@ -20,7 +20,7 @@ module.exports = {
         //     filename: 'index.html',
         // }),
         new CleanWebpackPlugin(),
-        new webpack.HotModuleReplacementPlugin(),
+        //new webpack.HotModuleReplacementPlugin(),
         new CopyPlugin({
             patterns: [
                 {from: 'src/assets', to: 'assets'},
@@ -48,15 +48,5 @@ module.exports = {
                 type: 'asset/inline',
             }
         ],
-    },
-    devServer: {
-        historyApiFallback: true,
-        static: {
-            directory: path.join(__dirname, 'dist'),
-        },
-        open: true,
-        compress: true,
-        hot: true,
-        port: 8080,
     }
 }

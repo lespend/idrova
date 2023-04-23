@@ -27,8 +27,7 @@ export function Accardeon() {
             prevActiveItemContent?.classList.remove('answers__accardeon-item-content--active')
             let activeItemContent = document.querySelector('.answers__accardeon-item--active+.answers__accardeon-item-content');
             let activeItemButton = document.querySelector('.answers__accardeon-item--active');
-            activeItemButton.scrollIntoView();
-            activeItemContent.classList.add('answers__accardeon-item-content--active')
+            activeItemContent.classList.add('answers__accardeon-item-content--active');
         }
     }
 

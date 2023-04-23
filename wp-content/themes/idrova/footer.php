@@ -34,6 +34,8 @@
                 <h2 class="buy-modal__header">Березовые дрова</h2>
                 <p class="buy-modal__price">2290 <small>₽\м³</small></p>
                 <form action="" class="buy-modal__form">
+                    <input type="hidden" name="product_name" value="">
+                    <input type="hidden" name="product_price" value="">
                     <label class="primary-label primary-quantity-input">
                         <span class="primary-quantity-input__label">Количество</span>
                         <button class="primary-quantity-input__plus"></button>

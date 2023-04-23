@@ -1,15 +1,10 @@
 export function Map(id) {
     const root = document.getElementById(id);
-    let coords = [
-        [60.0555868167543,30.43705542838387],
-        [55.64222236904938,37.59777347491282],
-        [56.00928885994502,37.84980964160128],
-    ];
 
     let mapDestroy;
     function mapInit() {
         let map = new ymaps.Map(id, {
-            center: coords[0],
+            center: [WP.mapCoords[0].latitude, WP.mapCoords[0].longitude],
             zoom: 10
         });
         mapDestroy = function() {
@@ -34,7 +29,7 @@ export function Map(id) {
                 let prevActive = root.querySelector('.shop-map__button--active');
                 prevActive.classList.remove('shop-map__button--active');
                 el.classList.add('shop-map__button--active');
-                map.panTo(coords[index], {delay: 10000});
+                map.panTo([parseFloat(WP.mapCoords[index].latitude), parseFloat(WP.mapCoords[index].longitude)], {delay: 5000});
             })
         })
         
@@ -50,6 +45,15 @@ export function Map(id) {
     }
 
     this.init = function() {
+        //Герация ui-элементов
+        const mapTabsContainer = root.querySelector('.shop-map__tabs');
+        for(let i = 0; i < WP.mapCoords.length; i++) {
+            let tab = document.createElement('button');
+            tab.classList.add('shop-map__button');
+            tab.innerHTML = WP.mapCoords[i].city;
+            if (i === 0) tab.classList.add('shop-map__button--active');
+            mapTabsContainer.insertAdjacentElement('beforeend', tab);
+        }
         ymaps.ready(mapInit);
     }
 

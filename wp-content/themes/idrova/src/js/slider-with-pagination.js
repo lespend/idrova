@@ -14,13 +14,6 @@ export function SliderWithPagination() {
     let position = 0;
     
     this.init = function() {
-        let hsl = 0;
-        for (let item of items) {
-            item.style.background = `hsl(${hsl},100%, 50%)`
-            hsl += 30;
-        }
-
-        
         createDots();
         checkButtons();
         changeActiveDot();
@@ -48,6 +41,8 @@ export function SliderWithPagination() {
         showItemsNum = Math.floor(sliderTrack.clientWidth / (width + gap));
         scrollItemsNum = showItemsNum;
         createDots();
+        checkButtons();
+        changeActiveDot();
         if (window.innerWidth <= 1200) {
             sliderTrack.classList.remove('partners__slider-track--transition')
             btnNext.style.display = 'none';
@@ -99,7 +94,7 @@ export function SliderWithPagination() {
     }
 
     function changeActiveDot() {
-        let dotIndex = Math.round(Math.abs(position) / (scrollItemsNum * (width + gap)));
+        let dotIndex = Math.ceil(Math.abs(position) / (scrollItemsNum * (width + gap)));
         let prevActiveDot = document.querySelector('.partners__slider-dot--active');
         prevActiveDot?.classList.remove('partners__slider-dot--active');
         dots[dotIndex].classList.add('partners__slider-dot--active');

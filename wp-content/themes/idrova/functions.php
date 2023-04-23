@@ -35,6 +35,8 @@ add_action('after_setup_theme', 'theme_support');
 function theme_support() {
     add_theme_support('post-thumbnails');
     add_image_size('product', 410, 243, true);
+    add_image_size('video_preview', 300, 201, true);
+    add_image_size('partners_logo', 213, 134);
 }
 
 use Carbon_Fields\Container;
