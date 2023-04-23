@@ -10,6 +10,7 @@ ___
 На front-end части сайта мной были реализованы с нуля **адаптивные слайдеры**, работа с **Яндекс картой**, с возможностью **динамического добавления новых местоположений** и ui-интерфейсом для переключения между ними, аккардеон и обработка форм. Я специально не использовал готовые решения для этих задач, чтобы попрактивовать свой Javascript **на реальных задачах в реальном проекте**. 
 
 # :gear: Технологии:
+<div>
 <img src="https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/html5/html5-original-wordmark.svg" width=50>&nbsp;
 <img src="https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/css3/css3-original-wordmark.svg" width=50>&nbsp;
 <img src="https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/javascript/javascript-original.svg" width=50>&nbsp;
@@ -17,3 +18,4 @@ ___
 <img src="https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/webpack/webpack-original.svg" width=50>&nbsp;
 <img src="https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/php/php-original.svg" width=50>&nbsp;
 <img src="https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/wordpress/wordpress-plain.svg" width=50>&nbsp;
+</div>
